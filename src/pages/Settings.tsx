@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Header from '@/components/Header';
 import Card from '@/components/common/Card';
@@ -11,7 +10,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { 
   Bell, 
   CreditCard, 
-  BankIcon, 
+  Building, // Changed from BankIcon to Building
   User, 
   Settings as SettingsIcon, 
   Lock, 
@@ -115,7 +114,7 @@ const Settings: React.FC = () => {
                           Credit Cards
                         </TabsTrigger>
                         <TabsTrigger value="ach" className="flex items-center">
-                          <BankIcon className="mr-2 h-4 w-4" />
+                          <Building className="mr-2 h-4 w-4" />
                           ACH / Bank Transfer
                         </TabsTrigger>
                       </TabsList>

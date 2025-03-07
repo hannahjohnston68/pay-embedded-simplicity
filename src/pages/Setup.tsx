@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Card from '@/components/common/Card';
@@ -9,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Switch } from '@/components/ui/switch';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { CreditCard, BankIcon, CheckCircle, CircleHelp, ExternalLink } from 'lucide-react';
+import { CreditCard, Building, CheckCircle, CircleHelp, ExternalLink } from 'lucide-react';
 
 const Setup: React.FC = () => {
   const [step, setStep] = useState(1);
@@ -161,7 +160,7 @@ const Setup: React.FC = () => {
                         Credit Card
                       </TabsTrigger>
                       <TabsTrigger value="ach" className="flex items-center">
-                        <BankIcon className="mr-2 h-4 w-4" />
+                        <Building className="mr-2 h-4 w-4" />
                         ACH / Bank Transfer
                       </TabsTrigger>
                     </TabsList>
