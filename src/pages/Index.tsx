@@ -3,9 +3,10 @@ import React from 'react';
 import Header from '@/components/Header';
 import PaymentStats from '@/components/PaymentStats';
 import Card from '@/components/common/Card';
-import { Button } from '@/components/ui/button';
 import Transition from '@/components/common/Transition';
-import { ArrowRight } from 'lucide-react';
+import CreatePaymentDialog from '@/components/payments/CreatePaymentDialog';
+import RecentActivity from '@/components/payments/RecentActivity';
+import QuickActions from '@/components/payments/QuickActions';
 
 const Index = () => {
   return (
@@ -25,10 +26,7 @@ const Index = () => {
                 </p>
               </div>
               
-              <Button className="button-glow">
-                Create Payment
-                <ArrowRight size={16} className="ml-2" />
-              </Button>
+              <CreatePaymentDialog />
             </div>
           </Transition>
 
@@ -41,15 +39,13 @@ const Index = () => {
               delay={200}
             >
               <Card>
-                <h2 className="text-lg font-medium mb-4">Recent Activity</h2>
-                {/* Activity content will go here */}
+                <RecentActivity />
               </Card>
             </Transition>
             
             <Transition animation="slide-up" delay={300}>
               <Card>
-                <h2 className="text-lg font-medium mb-4">Quick Actions</h2>
-                {/* Quick actions will go here */}
+                <QuickActions />
               </Card>
             </Transition>
           </div>
