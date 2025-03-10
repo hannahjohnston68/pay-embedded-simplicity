@@ -89,25 +89,25 @@ const getStatusIcon = (status: Transaction['status'], type: Transaction['type'])
   if (status === 'failed') return <AlertCircle className="h-4 w-4 text-red-500" />;
 };
 
+const getStatusVariant = (status: Transaction['status'], type: Transaction['type']) => {
+  if (type === 'refund') return 'warning';
+  if (type === 'payout') return 'blue';
+  
+  if (status === 'completed') return 'success';
+  if (status === 'pending') return 'warning';
+  if (status === 'failed') return 'destructive';
+};
+
 const getStatusText = (status: Transaction['status'], type: Transaction['type']) => {
   if (type === 'refund') return 'Refunded';
   if (type === 'payout') return 'Transferred';
   return status.charAt(0).toUpperCase() + status.slice(1);
 };
 
-const getStatusColor = (status: Transaction['status'], type: Transaction['type']) => {
-  if (type === 'refund') return 'bg-yellow-50 text-yellow-700';
-  if (type === 'payout') return 'bg-blue-50 text-blue-700';
-  
-  if (status === 'completed') return 'bg-green-50 text-green-700';
-  if (status === 'pending') return 'bg-amber-50 text-amber-700';
-  if (status === 'failed') return 'bg-red-50 text-red-700';
-};
-
 const RecentActivity: React.FC = () => {
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="method-card-header">
         <h2 className="text-lg font-medium">Recent Activity</h2>
         <Button variant="ghost" size="sm" className="text-xs">
           View all transactions
@@ -122,8 +122,20 @@ const RecentActivity: React.FC = () => {
               className="flex items-center justify-between p-3 rounded-lg border border-border/40 hover:bg-secondary/30 transition-colors"
             >
               <div className="flex items-center space-x-3">
-                <div className={`p-2 rounded-full ${transaction.type === 'payment' ? 'bg-green-50' : transaction.type === 'refund' ? 'bg-yellow-50' : 'bg-blue-50'}`}>
-                  <DollarSign className={`h-4 w-4 ${transaction.type === 'payment' ? 'text-green-500' : transaction.type === 'refund' ? 'text-yellow-500' : 'text-blue-500'}`} />
+                <div className={`p-2 rounded-full ${
+                  transaction.type === 'payment' 
+                    ? 'bg-green-50' 
+                    : transaction.type === 'refund' 
+                      ? 'bg-yellow-50' 
+                      : 'bg-blue-50'
+                }`}>
+                  <DollarSign className={`h-4 w-4 ${
+                    transaction.type === 'payment' 
+                      ? 'text-green-500' 
+                      : transaction.type === 'refund' 
+                        ? 'text-yellow-500' 
+                        : 'text-blue-500'
+                  }`} />
                 </div>
                 
                 <div>
@@ -139,7 +151,7 @@ const RecentActivity: React.FC = () => {
                 <p className={`font-medium ${transaction.amount < 0 ? 'text-yellow-600' : 'text-foreground'}`}>
                   {transaction.amount < 0 ? '-' : ''}{formatCurrency(Math.abs(transaction.amount))}
                 </p>
-                <Badge variant="outline" className={`text-xs ${getStatusColor(transaction.status, transaction.type)}`}>
+                <Badge variant={getStatusVariant(transaction.status, transaction.type)}>
                   <span className="flex items-center">
                     {getStatusIcon(transaction.status, transaction.type)}
                     <span className="ml-1">{getStatusText(transaction.status, transaction.type)}</span>

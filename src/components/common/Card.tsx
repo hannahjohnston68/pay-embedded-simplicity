@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils';
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
-  variant?: 'default' | 'glass' | 'flat';
+  variant?: 'default' | 'glass' | 'flat' | 'stripe';
   padding?: 'none' | 'small' | 'medium' | 'large';
   isHoverable?: boolean;
 }
@@ -29,6 +29,7 @@ const Card: React.FC<CardProps> = ({
     default: 'bg-card shadow-soft rounded-xl border border-border/30',
     glass: 'glass-card rounded-xl',
     flat: 'bg-card rounded-xl border border-border/50',
+    stripe: 'card-stripe',
   };
 
   return (
@@ -36,7 +37,7 @@ const Card: React.FC<CardProps> = ({
       className={cn(
         variantStyles[variant],
         paddingMap[padding],
-        isHoverable && 'transition-all duration-300 hover:translate-y-[-4px] hover:shadow-glass',
+        isHoverable && 'transition-all duration-300 hover:translate-y-[-4px] hover:shadow-md',
         className
       )}
       {...props}
