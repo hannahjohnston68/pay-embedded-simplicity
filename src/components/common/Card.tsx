@@ -28,7 +28,7 @@ const Card: React.FC<CardProps> = ({
   const variantStyles = {
     default: 'bg-card shadow-soft rounded-xl border border-border/30',
     glass: 'glass-card rounded-xl',
-    flat: 'bg-card rounded-xl border border-border/50',
+    flat: 'bg-navy-800 rounded-xl border border-border/20',
     stripe: 'card-stripe',
   };
 
