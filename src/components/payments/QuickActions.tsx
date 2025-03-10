@@ -51,9 +51,7 @@ const QuickActions: React.FC = () => {
 
   return (
     <div className="space-y-4">
-      <div className="method-card-header">
-        <h2 className="text-lg font-medium">Quick Actions</h2>
-      </div>
+      <h2 className="text-lg font-medium mb-4">Quick Actions</h2>
       
       <div className="space-y-4">
         {actionGroups.map((group, index) => (
@@ -67,7 +65,7 @@ const QuickActions: React.FC = () => {
                     <DialogComponent key={actionIndex}>
                       <Button 
                         variant="outline" 
-                        className="w-full justify-between hover:bg-accent/50 rounded-lg"
+                        className="w-full justify-between hover:bg-secondary/50"
                       >
                         <span className="flex items-center">
                           {action.icon}
@@ -83,7 +81,7 @@ const QuickActions: React.FC = () => {
                   <Button 
                     key={actionIndex}
                     variant="outline" 
-                    className="w-full justify-between hover:bg-accent/50 rounded-lg"
+                    className="w-full justify-between hover:bg-secondary/50"
                     onClick={typeof action.action === 'function' ? action.action : undefined}
                   >
                     <span className="flex items-center">

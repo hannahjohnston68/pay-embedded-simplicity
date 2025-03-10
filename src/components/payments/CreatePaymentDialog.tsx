@@ -42,7 +42,7 @@ const CreatePaymentDialog: React.FC<CreatePaymentDialogProps> = ({ children }) =
     <Dialog>
       <DialogTrigger asChild>
         {children || (
-          <Button className="method-button">
+          <Button className="button-glow">
             Create Payment
             <ArrowRight size={16} className="ml-2" />
           </Button>
@@ -60,7 +60,7 @@ const CreatePaymentDialog: React.FC<CreatePaymentDialogProps> = ({ children }) =
           <div className="space-y-2">
             <Label htmlFor="customer">Customer</Label>
             <Select>
-              <SelectTrigger id="customer" className="method-input border">
+              <SelectTrigger id="customer">
                 <SelectValue placeholder="Select customer" />
               </SelectTrigger>
               <SelectContent>
@@ -75,12 +75,12 @@ const CreatePaymentDialog: React.FC<CreatePaymentDialogProps> = ({ children }) =
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label htmlFor="amount">Amount</Label>
-              <Input id="amount" placeholder="0.00" type="number" step="0.01" className="method-input" />
+              <Input id="amount" placeholder="0.00" type="number" step="0.01" />
             </div>
             <div className="space-y-2">
               <Label htmlFor="currency">Currency</Label>
               <Select defaultValue="usd">
-                <SelectTrigger id="currency" className="method-input border">
+                <SelectTrigger id="currency">
                   <SelectValue placeholder="USD" />
                 </SelectTrigger>
                 <SelectContent>
@@ -95,13 +95,13 @@ const CreatePaymentDialog: React.FC<CreatePaymentDialogProps> = ({ children }) =
           
           <div className="space-y-2">
             <Label htmlFor="description">Description</Label>
-            <Input id="description" placeholder="Invoice #1234" className="method-input" />
+            <Input id="description" placeholder="Invoice #1234" />
           </div>
           
           <div className="space-y-2">
             <Label>Payment Method</Label>
             <Tabs defaultValue="card" className="w-full">
-              <TabsList className="grid grid-cols-2 p-1 bg-accent">
+              <TabsList className="grid grid-cols-2">
                 <TabsTrigger value="card" className="flex items-center">
                   <CreditCard className="mr-2 h-4 w-4" />
                   Credit Card
@@ -114,20 +114,20 @@ const CreatePaymentDialog: React.FC<CreatePaymentDialogProps> = ({ children }) =
               <TabsContent value="card" className="space-y-4 mt-4">
                 <div className="space-y-2">
                   <Label htmlFor="cardNumber">Card Information</Label>
-                  <Input id="cardNumber" placeholder="Customer will provide" disabled className="bg-muted/50 method-input" />
+                  <Input id="cardNumber" placeholder="Customer will provide" disabled className="bg-muted/50" />
                 </div>
               </TabsContent>
               <TabsContent value="ach" className="space-y-4 mt-4">
                 <div className="space-y-2">
                   <Label htmlFor="accountNumber">Bank Information</Label>
-                  <Input id="accountNumber" placeholder="Customer will provide" disabled className="bg-muted/50 method-input" />
+                  <Input id="accountNumber" placeholder="Customer will provide" disabled className="bg-muted/50" />
                 </div>
               </TabsContent>
             </Tabs>
           </div>
           
           <DialogFooter>
-            <Button type="submit" className="method-button w-full">
+            <Button type="submit" className="w-full">
               Create Payment Request
               <ArrowRight size={16} className="ml-2" />
             </Button>

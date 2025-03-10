@@ -16,7 +16,7 @@ const Index = () => {
       <main className="container max-w-7xl mx-auto px-4 pt-24">
         <div className="flex flex-col space-y-8">
           <Transition animation="slide-up">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+            <div className="flex items-center justify-between mb-8">
               <div>
                 <h1 className="text-4xl font-semibold tracking-tight mb-2">
                   Payment Dashboard
@@ -38,13 +38,13 @@ const Index = () => {
               animation="slide-up"
               delay={200}
             >
-              <Card className="bg-white">
+              <Card>
                 <RecentActivity />
               </Card>
             </Transition>
             
             <Transition animation="slide-up" delay={300}>
-              <Card className="bg-white">
+              <Card>
                 <QuickActions />
               </Card>
             </Transition>
