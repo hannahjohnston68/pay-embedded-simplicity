@@ -4,7 +4,8 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  base: "./",
+  // Updated base to match your repository name
+  base: "/pay-embedded-simplicity/",
   server: {
     host: "::",
     port: 8080,
