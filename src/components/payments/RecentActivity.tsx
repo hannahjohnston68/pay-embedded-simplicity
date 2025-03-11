@@ -81,12 +81,12 @@ const formatDate = (dateString: string) => {
 };
 
 const getStatusIcon = (status: Transaction['status'], type: Transaction['type']) => {
-  if (type === 'refund') return <ArrowRightLeft className="h-4 w-4 text-yellow-500" />;
-  if (type === 'payout') return <ArrowRightLeft className="h-4 w-4 text-blue-500" />;
+  if (type === 'refund') return <ArrowRightLeft className="h-4 w-4 text-amber-400" />;
+  if (type === 'payout') return <ArrowRightLeft className="h-4 w-4 text-blue-400" />;
   
-  if (status === 'completed') return <CheckCircle className="h-4 w-4 text-green-500" />;
-  if (status === 'pending') return <Clock className="h-4 w-4 text-amber-500" />;
-  if (status === 'failed') return <AlertCircle className="h-4 w-4 text-red-500" />;
+  if (status === 'completed') return <CheckCircle className="h-4 w-4 text-emerald-400" />;
+  if (status === 'pending') return <Clock className="h-4 w-4 text-amber-400" />;
+  if (status === 'failed') return <AlertCircle className="h-4 w-4 text-rose-400" />;
 };
 
 const getStatusText = (status: Transaction['status'], type: Transaction['type']) => {
@@ -96,12 +96,18 @@ const getStatusText = (status: Transaction['status'], type: Transaction['type'])
 };
 
 const getStatusColor = (status: Transaction['status'], type: Transaction['type']) => {
-  if (type === 'refund') return 'bg-yellow-50 text-yellow-700';
-  if (type === 'payout') return 'bg-blue-50 text-blue-700';
+  if (type === 'refund') return 'bg-amber-950/60 text-amber-400 border-amber-800/20';
+  if (type === 'payout') return 'bg-blue-950/60 text-blue-400 border-blue-800/20';
   
-  if (status === 'completed') return 'bg-green-50 text-green-700';
-  if (status === 'pending') return 'bg-amber-50 text-amber-700';
-  if (status === 'failed') return 'bg-red-50 text-red-700';
+  if (status === 'completed') return 'bg-emerald-950/60 text-emerald-400 border-emerald-800/20';
+  if (status === 'pending') return 'bg-amber-950/60 text-amber-400 border-amber-800/20';
+  if (status === 'failed') return 'bg-rose-950/60 text-rose-400 border-rose-800/20';
+};
+
+const getIconBgColor = (type: Transaction['type']) => {
+  if (type === 'payment') return 'bg-emerald-950/60 text-emerald-400';
+  if (type === 'refund') return 'bg-amber-950/60 text-amber-400';
+  return 'bg-blue-950/60 text-blue-400';
 };
 
 const RecentActivity: React.FC = () => {
@@ -109,7 +115,7 @@ const RecentActivity: React.FC = () => {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-medium">Recent Activity</h2>
-        <Button variant="ghost" size="sm" className="text-xs">
+        <Button variant="ghost" size="sm" className="text-xs text-primary">
           View all transactions
         </Button>
       </div>
@@ -119,11 +125,11 @@ const RecentActivity: React.FC = () => {
           {transactions.map((transaction) => (
             <div 
               key={transaction.id}
-              className="flex items-center justify-between p-3 rounded-lg border border-border/40 hover:bg-secondary/30 transition-colors"
+              className="flex items-center justify-between p-3 rounded-lg border border-border/40 bg-secondary/20 hover:bg-secondary/40 transition-colors"
             >
               <div className="flex items-center space-x-3">
-                <div className={`p-2 rounded-full ${transaction.type === 'payment' ? 'bg-green-50' : transaction.type === 'refund' ? 'bg-yellow-50' : 'bg-blue-50'}`}>
-                  <DollarSign className={`h-4 w-4 ${transaction.type === 'payment' ? 'text-green-500' : transaction.type === 'refund' ? 'text-yellow-500' : 'text-blue-500'}`} />
+                <div className={`p-2 rounded-full ${getIconBgColor(transaction.type)}`}>
+                  <DollarSign className="h-4 w-4" />
                 </div>
                 
                 <div>
@@ -136,10 +142,10 @@ const RecentActivity: React.FC = () => {
               </div>
               
               <div className="flex flex-col items-end">
-                <p className={`font-medium ${transaction.amount < 0 ? 'text-yellow-600' : 'text-foreground'}`}>
+                <p className={`font-medium ${transaction.amount < 0 ? 'text-amber-400' : 'text-foreground'}`}>
                   {transaction.amount < 0 ? '-' : ''}{formatCurrency(Math.abs(transaction.amount))}
                 </p>
-                <Badge variant="outline" className={`text-xs ${getStatusColor(transaction.status, transaction.type)}`}>
+                <Badge variant="outline" className={`text-xs border ${getStatusColor(transaction.status, transaction.type)}`}>
                   <span className="flex items-center">
                     {getStatusIcon(transaction.status, transaction.type)}
                     <span className="ml-1">{getStatusText(transaction.status, transaction.type)}</span>

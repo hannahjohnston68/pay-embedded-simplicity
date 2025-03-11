@@ -10,7 +10,7 @@ import QuickActions from '@/components/payments/QuickActions';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background bg-[radial-gradient(ellipse_at_top,rgba(93,52,236,0.05),transparent_50%)]">
       <Header />
       
       <main className="container max-w-7xl mx-auto px-4 pt-24">
@@ -18,7 +18,7 @@ const Index = () => {
           <Transition animation="slide-up">
             <div className="flex items-center justify-between mb-8">
               <div>
-                <h1 className="text-4xl font-semibold tracking-tight mb-2">
+                <h1 className="text-4xl font-semibold tracking-tight mb-2 text-foreground">
                   Payment Dashboard
                 </h1>
                 <p className="text-muted-foreground">

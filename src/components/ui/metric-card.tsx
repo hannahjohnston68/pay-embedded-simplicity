@@ -28,14 +28,14 @@ const MetricCard: React.FC<MetricCardProps> = ({
 }) => {
   return (
     <Card 
-      className={cn('overflow-hidden', className)} 
+      className={cn('backdrop-blur-sm overflow-hidden', className)} 
       variant="glass"
       isHoverable
     >
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
-          {icon && <div className="text-muted-foreground">{icon}</div>}
+          {icon && <div className="metric-icon">{icon}</div>}
         </div>
         
         <div className="mt-auto">
@@ -53,8 +53,8 @@ const MetricCard: React.FC<MetricCardProps> = ({
                 className={cn(
                   "text-xs font-medium px-1.5 py-0.5 rounded-md",
                   change.isPositive 
-                    ? "text-green-700 bg-green-100" 
-                    : "text-red-700 bg-red-100"
+                    ? "text-emerald-400 bg-emerald-950/60" 
+                    : "text-rose-400 bg-rose-950/60"
                 )}
               >
                 {change.isPositive ? '↑' : '↓'} {Math.abs(change.value)}%

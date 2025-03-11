@@ -26,9 +26,9 @@ const Card: React.FC<CardProps> = ({
   };
 
   const variantStyles = {
-    default: 'bg-card shadow-soft rounded-xl border border-border/30',
-    glass: 'glass-card rounded-xl',
-    flat: 'bg-card rounded-xl border border-border/50',
+    default: 'bg-card shadow-md rounded-lg border border-border/30',
+    glass: 'glass-card rounded-lg',
+    flat: 'bg-card rounded-lg border border-border/50',
   };
 
   return (
@@ -36,7 +36,7 @@ const Card: React.FC<CardProps> = ({
       className={cn(
         variantStyles[variant],
         paddingMap[padding],
-        isHoverable && 'transition-all duration-300 hover:translate-y-[-4px] hover:shadow-glass',
+        isHoverable && 'transition-all duration-300 hover:translate-y-[-4px] hover:shadow-lg hover:border-primary/20',
         className
       )}
       {...props}

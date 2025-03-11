@@ -7,91 +7,44 @@
 
 @layer base {
   :root {
-    --background: 210 40% 99%;
-    --foreground: 240 10% 3.9%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
 
-    /* Changed from light blue (209 100% 50%) to dark blue */
-    --primary: 220 85% 30%;
+    --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 224 57% 22%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 215 27% 16%;
+    --muted-foreground: 217 19% 72%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 220 59% 18%;
+    --accent-foreground: 213 31% 91%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    /* Changed ring color to match primary */
-    --ring: 220 85% 30%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 262 83% 58%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    /* Changed sidebar primary to match main primary */
-    --sidebar-primary: 220 85% 30%;
+    --sidebar-background: 224 71% 4%;
+    --sidebar-foreground: 213 31% 91%;
+    --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 240 5.9% 90%;
-    /* Changed sidebar ring to match main ring */
-    --sidebar-ring: 220 85% 30%;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-
-    /* Changed from light blue to darker blue for dark mode */
-    --primary: 220 85% 40%;
-    --primary-foreground: 0 0% 98%;
-
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    /* Changed ring color to match primary */
-    --ring: 220 85% 40%;
-
-    --sidebar-background: 240 10% 3.9%;
-    --sidebar-foreground: 0 0% 98%;
-    /* Changed sidebar primary to match main primary */
-    --sidebar-primary: 220 85% 40%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 0 0% 98%;
-    --sidebar-border: 240 3.7% 15.9%;
-    /* Changed sidebar ring to match main ring */
-    --sidebar-ring: 220 85% 40%;
+    --sidebar-accent: 220 59% 18%;
+    --sidebar-accent-foreground: 213 31% 91%;
+    --sidebar-border: 216 34% 17%;
+    --sidebar-ring: 262 83% 58%;
   }
 }
 
@@ -131,13 +84,13 @@
 
   /* Blur effect on app header */
   .header-blur {
-    @apply bg-background/80 backdrop-blur-sm border-b;
+    @apply bg-background/80 backdrop-blur-sm border-b border-border/40;
     -webkit-backdrop-filter: blur(8px);
   }
 
   /* Glass card effect */
   .glass-card {
-    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-glass;
+    @apply bg-card/70 backdrop-blur-md border border-white/10 shadow-glass;
     -webkit-backdrop-filter: blur(16px);
   }
 
@@ -177,5 +130,13 @@
 
   .button-glow:hover::after {
     @apply opacity-100;
+  }
+
+  .dashboard-card {
+    @apply rounded-lg border border-border/50 bg-card/60 p-4 shadow-md backdrop-blur-sm;
+  }
+
+  .metric-icon {
+    @apply flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary;
   }
 }
